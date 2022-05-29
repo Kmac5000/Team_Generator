@@ -1,0 +1,39 @@
+Build a Command line application
+
+1. ask questions about team members
+    I need 3 types of employees AND finish building team option.
+        1. Manager
+            After Manager selected
+                A. Name
+                B. Employee ID
+                C. Email address
+                D. Office number
+            Then Engineer/Intern/ or Finish building team
+        2. Engineer
+            When Engineer is selected
+                A. Name
+                B. Employee ID
+                C. Email
+                D. Github
+            Then back to Engineer/Intern/ or Finish building team
+        3. Intern
+            When Intern is selected propmt
+                A. Name
+                B. ID
+                C. School
+            Then back to Engineer/Intern/ or Finish building team
+        4. Finish building team
+                A. Auto Exit apllication
+                B. Write/Generate html page
+
+2. after questions are ansewered then an HTML page opens.
+    A. user input is displayed
+
+3.open email link-
+    A. links to default email program
+        a. email TO field is populated with email address
+
+4.Github link 
+    A. username takes you to Github profile
+
+5.
