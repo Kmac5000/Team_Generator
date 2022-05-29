@@ -36,4 +36,8 @@ Build a Command line application
 4.Github link 
     A. username takes you to Github profile
 
-5.
+
+Requirements:
+    1. use jest
+    2. use inquirer
+    3. invoke application using index.js
