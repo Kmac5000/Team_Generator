@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const Choices = require("inquirer/lib/objects/choices");
+const fs = require("fs");
 
 const teamMembers = [];
 
@@ -54,10 +55,10 @@ class Intern extends Employee {
 }
 
 class Manager extends Employee {
-  constructor(name, id, email, officeNumber) {
+  constructor(name, id, email, office) {
     // calling employee constructor
     super(name, id, email);
-    this.officeNumber = officeNumber;
+    this.officeNumber = office;
   }
 
   // override employee role to manager
@@ -65,6 +66,38 @@ class Manager extends Employee {
     return "Manager";
   }
 }
+
+const manChoice = () => {
+  return inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Who is the manager?",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What is the manager ID?",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "What is the manager email?",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What is the manager office number?",
+        name: "office",
+      },
+    ])
+    .then((manInfo) => {
+      const { name, id, email, office } = manInfo;
+      const manager = new Manager(name, id, email, office);
+      teamMembers.push(manager);
+      console.log(manager);
+    });
+};
 
 const employeeChoice = () => {
   return inquirer
@@ -105,9 +138,9 @@ const employeeChoice = () => {
       },
       {
         type: "confirm",
-        message: "Do you have more employees?",
+        message: "Do you have more employees to add?",
         name: "moreEmployees",
-        default: false,
+        default: true,
       },
     ])
     .then((employeeInfo) => {
@@ -131,4 +164,21 @@ const employeeChoice = () => {
     });
 };
 
-(module.exports = employeeChoice), Employee, Engineer, Intern, Manager;
+const writeFile = (data) => {
+  fs.writeFile("./dist/index.html", data, (err) => {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      console.log("Your team profile has been created");
+    }
+  });
+};
+
+(module.exports = employeeChoice),
+  manChoice,
+  Employee,
+  Engineer,
+  Intern,
+  Manager,
+  writeFile;
