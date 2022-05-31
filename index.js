@@ -1,6 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const { Employee, Engineer, Intern, Manager } = require("./src/construtor");
+const Manager = require("./lib/Manager");
+const Employee = require("./lib/Employee");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 let teamMembers = [];
 
@@ -94,7 +97,7 @@ const employeeChoice = (teamMembers) => {
         teamMembers.push(intern);
         console.log(intern);
       }
-
+      console.log(`Entire list of team members: ${teamMembers[0]}`);
       if (moreEmployees) {
         return employeeChoice(teamMembers);
       } else {
