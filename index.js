@@ -104,17 +104,16 @@ const employeeChoice = (teamMembers) => {
         return teamMembers;
       }
     });
-};
-
-const writeFile = (data) => {
-  fs.writeFile("./dist/index.html", data, (err) => {
-    if (err) {
-      console.log(err);
-      return;
-    } else {
-      console.log("Your team profile has been created");
-    }
-  });
+  const writeFile = (data) => {
+    fs.writeFile("./dist/index.html", data, (err) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        console.log("Your team profile has been created");
+      }
+    });
+  };
 };
 
 manChoice();
