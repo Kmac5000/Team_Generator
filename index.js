@@ -112,7 +112,7 @@ const employeeChoice = (teamMembers) => {
 const generateHTML = () => {
   // array for cards
   console.log("this the: ", teamMembers);
-  // cardArray = [];
+  cardArray = [];
 
   for (let i = 0; i < data.length; i++) {
     let employee = teamMembers[i];
