@@ -1,4 +1,44 @@
-const generateHtml = (employeeCards) => {
+const { genInt, genEng, genMan } = require("./genCards");
+
+// push array to page
+generateHTML = (teamMembers) => {
+  // array for cards
+  console.log(teamMembers);
+  cardArray = [];
+
+  for (let i = 0; i < data.length; i++) {
+    let employee = teamMembers[i];
+    let type = employee.empType();
+
+    // call manager function
+    if (type === "Manager") {
+      const manCard = genMan(employee);
+
+      cardArray.push(manCard);
+    }
+
+    // call engineer function
+    if (type === "Engineer") {
+      let engCard = genEng(employee);
+
+      cardArray.push(engCard);
+    }
+
+    // call intern function
+    if (type === "Intern") {
+      let intCard = genInt(employee);
+
+      cardArray.push(intCard);
+    }
+  }
+
+  const empCards = cardArray.join("");
+
+  const genTeam = JSON.stringify(generatePage(empCards));
+  return genTeam;
+};
+
+const generatePage = (empCards) => {
   `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +69,7 @@ const generateHtml = (employeeCards) => {
     <main>
       <div class="container">
         <div class="row justify-content-center" id="team-cards">
-          ${employeeCards}
+          ${empCards}
         </div>
       </div>
     </main>
@@ -47,3 +87,5 @@ const generateHtml = (employeeCards) => {
   ></script>
 </html>`;
 };
+
+module.exports = generateHTML;

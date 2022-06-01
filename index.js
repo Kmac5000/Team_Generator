@@ -4,6 +4,7 @@ const Manager = require("./lib/Manager");
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const generateHTML = require("./src/constructHTML");
 
 let teamMembers = [];
 
@@ -48,7 +49,7 @@ const employeeChoice = (teamMembers) => {
         type: "list",
         message: "What type of employee would you like to add?",
         name: "employeeType",
-        choices: ["Engineer", "Intern", "None"],
+        choices: ["Engineer", "Intern"],
       },
       {
         type: "input",
@@ -97,31 +98,37 @@ const employeeChoice = (teamMembers) => {
         teamMembers.push(intern);
         console.log(intern);
       }
-      console.log(`Entire list of team members: ${teamMembers[0]}`);
+
       if (moreEmployees) {
         return employeeChoice(teamMembers);
       } else {
         return teamMembers;
       }
     });
-  const writeFile = (data) => {
-    fs.writeFile("./dist/index.html", data, (err) => {
-      if (err) {
-        console.log(err);
-        return;
-      } else {
-        console.log("Your team profile has been created");
-      }
-    });
-  };
 };
 
-manChoice();
+const writeFile = (data) => {
+  fs.writeFile("./dist/index.html", data, (err) => {
+    // if there is an error
+    if (err) {
+      console.log(err);
+      return;
+      // when the profile has been created
+    } else {
+      console.log(
+        "Your team profile has been successfully created! Please check out the index.html"
+      );
+    }
+  });
+};
 
-// (module.exports = employeeChoice),
-//   manChoice,
-//   Employee,
-//   Engineer,
-//   Intern,
-//   Manager,
-//  writeFile;
+manChoice()
+  .then((teamMembers) => {
+    return generateHTML(teamMembers);
+  })
+  .then((generateHTML) => {
+    return writeFile(generateHTML);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
