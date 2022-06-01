@@ -1,6 +1,6 @@
 const Intern = require("../lib/Intern");
 
-describe("Engineer", () => {
+describe("Intern", () => {
   it("generates employee name, id, email, school ", () => {
     const intern = new Intern(
       "Keith",
