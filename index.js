@@ -6,6 +6,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 // const generateHTML = require("./src/constructHTML");
 const { genInt, genEng, genMan } = require("./src/genCards");
+const { Console } = require("console");
 
 let teamMembers = [];
 
@@ -67,7 +68,6 @@ const employeeChoice = (teamMembers) => {
         type: "input",
         message: "What is the Employee email?",
         name: "email",
-        when: (input) => input.employeeType === "Engineer",
       },
       {
         type: "input",
@@ -88,6 +88,7 @@ const employeeChoice = (teamMembers) => {
       },
     ])
     .then((employeeInfo) => {
+      console.log(employeeInfo);
       let { employeeType, name, id, email, github, school, moreEmployees } =
         employeeInfo;
 
@@ -95,7 +96,8 @@ const employeeChoice = (teamMembers) => {
         let engineer = new Engineer(name, id, email, github);
         teamMembers.push(engineer);
         console.log(engineer);
-      } else {
+      }
+      if (employeeType === "Intern") {
         let intern = new Intern(name, id, school);
         teamMembers.push(intern);
         console.log(intern);
@@ -109,6 +111,7 @@ const employeeChoice = (teamMembers) => {
     });
 };
 
+console.log(teamMembers);
 const generateHTML = () => {
   // array for cards
   console.log("this the: ", teamMembers);
@@ -159,13 +162,13 @@ const writeFile = (data) => {
   });
 };
 
-manChoice()
-  .then((teamMembers) => {
-    return generateHTML(teamMembers);
-  })
-  .then((generateHTML) => {
-    return writeFile(generateHTML);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+manChoice();
+// .then((teamMembers) => {
+//   return generateHTML(teamMembers);
+// })
+// .then((generateHTML) => {
+//   return writeFile(generateHTML);
+// })
+// .catch((err) => {
+//   console.log(err);
+// });
