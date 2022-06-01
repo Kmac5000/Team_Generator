@@ -4,7 +4,8 @@ const Manager = require("./lib/Manager");
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const generateHTML = require("./src/constructHTML");
+// const generateHTML = require("./src/constructHTML");
+const { genInt, genEng, genMan } = require("./src/genCards");
 
 let teamMembers = [];
 
@@ -36,9 +37,10 @@ const manChoice = () => {
       const { name, id, email, office } = manInfo;
       const manager = new Manager(name, id, email, office);
       teamMembers.push(manager);
-      console.log(manager);
+      // console.log(manager);
 
       employeeChoice(teamMembers);
+      console.log(teamMembers);
     });
 };
 
@@ -53,29 +55,29 @@ const employeeChoice = (teamMembers) => {
       },
       {
         type: "input",
-        meassge: "What is the Employee name?",
+        message: "What is the Employee name?",
         name: "name",
       },
       {
         type: "input",
-        meassge: "What is the Employee ID?",
+        message: "What is the Employee ID?",
         name: "id",
       },
       {
         type: "input",
-        meassge: "What is the Employee email?",
+        message: "What is the Employee email?",
         name: "email",
         when: (input) => input.employeeType === "Engineer",
       },
       {
         type: "input",
-        meassge: "What is the Employee Github id?",
+        message: "What is the Employee Github id?",
         name: "github",
         when: (input) => input.employeeType === "Engineer",
       },
       {
         type: "input",
-        meassge: "What school does your intern attend?",
+        message: "What school does your intern attend?",
         name: "school",
         when: (input) => input.employeeType === "Intern",
       },
@@ -107,13 +109,48 @@ const employeeChoice = (teamMembers) => {
     });
 };
 
+const generateHTML = () => {
+  // array for cards
+  console.log("this the: ", teamMembers);
+  // cardArray = [];
+
+  for (let i = 0; i < data.length; i++) {
+    let employee = teamMembers[i];
+    let type = employee.empType();
+
+    //manager function
+    if (type === "Manager") {
+      const manCard = genMan(employee);
+
+      cardArray.push(manCard);
+    }
+
+    //engineer function
+    if (type === "Engineer") {
+      let engCard = genEng(employee);
+
+      cardArray.push(engCard);
+    }
+
+    //intern function
+    if (type === "Intern") {
+      let intCard = genInt(employee);
+
+      cardArray.push(intCard);
+    }
+  }
+
+  const empCards = cardArray.join("");
+
+  const genTeam = JSON.stringify(generatePage(empCards));
+  return genTeam;
+};
+
 const writeFile = (data) => {
-  fs.writeFile("./dist/index.html", data, (err) => {
-    // if there is an error
+  fs.writeFile("./dist/index.html", generateHTML(data), (err) => {
     if (err) {
       console.log(err);
       return;
-      // when the profile has been created
     } else {
       console.log(
         "Your team profile has been successfully created! Please check out the index.html"
