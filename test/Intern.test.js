@@ -1,17 +1,34 @@
 const Intern = require("../lib/Intern");
 
-describe("Intern", () => {
-  it("gets type of employee", () => {
-    const intern = new Intern("Keith", 45, "riverbatrock@gmail", "DU");
+describe("Engineer", () => {
+  it("generates employee name, id, email, school ", () => {
+    const intern = new Intern(
+      "Keith",
+      45,
+      "riverbatrock@gmail",
+      "Kmac5000",
+      "Engineer"
+    );
 
-    expect(intern.empType()).toEqual(expect.any(String));
+    expect(typeof intern.name).toBe("string");
+    expect(typeof intern.id).toBe("number");
+    expect(typeof intern.email).toBe("string");
+    expect(typeof intern.school).toBe("string");
   });
-});
+  it("should get employee name, id, email, school, role", () => {
+    const intern = new Intern(
+      "Keith",
+      45,
+      "riverbatrock@gmail",
+      "Kmac5000",
+      "Intern"
+    );
+    const { name, id, email, school } = intern;
 
-describe("Intern", () => {
-  it("generates employee school", () => {
-    const intern = new Intern("Keith", 45, "riverbatrock@gmail", "DU");
-
-    expect(intern.empSchool()).toEqual(expect.any(String));
+    expect(intern.empName()).toBe(name);
+    expect(intern.empId()).toBe(id);
+    expect(intern.empEmail()).toBe(email);
+    expect(intern.empSchool()).toBe(school);
+    expect(intern.empType()).toBe("Intern");
   });
 });
