@@ -38,7 +38,7 @@ const { genInt, genEng, genMan } = require("./genCards");
 // };
 
 const generatePage = (empCards) => {
-  `<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -57,7 +57,7 @@ const generatePage = (empCards) => {
       href="https://fonts.googleapis.com/css2?family=Creepster&family=Gloria+Hallelujah&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="../src/style.css" />
   </head>
   <body>
     <header>
@@ -87,4 +87,4 @@ const generatePage = (empCards) => {
 </html>`;
 };
 
-// module.exports = generateHTML;
+module.exports = generatePage;

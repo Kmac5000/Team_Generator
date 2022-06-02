@@ -4,9 +4,9 @@ const Manager = require("./lib/Manager");
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const generatePage = require("./src/constructHTML");
 // const generateHTML = require("./src/constructHTML");
 const { genInt, genEng, genMan } = require("./src/genCards");
-const { Console } = require("console");
 
 let teamMembers = [];
 
@@ -40,12 +40,11 @@ const manChoice = () => {
       teamMembers.push(manager);
       // console.log(manager);
 
-      employeeChoice(teamMembers);
-      console.log(teamMembers);
+      return employeeChoice();
     });
 };
 
-const employeeChoice = (teamMembers) => {
+const employeeChoice = () => {
   return inquirer
     .prompt([
       {
@@ -88,36 +87,44 @@ const employeeChoice = (teamMembers) => {
       },
     ])
     .then((employeeInfo) => {
-      console.log(employeeInfo);
+      console.log("this is the", employeeInfo);
       let { employeeType, name, id, email, github, school, moreEmployees } =
         employeeInfo;
 
       if (employeeType === "Engineer") {
-        let engineer = new Engineer(name, id, email, github);
+        const engineer = new Engineer(name, id, email, github);
         teamMembers.push(engineer);
-        console.log(engineer);
+        // console.log(engineer);
       }
       if (employeeType === "Intern") {
-        let intern = new Intern(name, id, school);
+        const intern = new Intern(name, id, school);
         teamMembers.push(intern);
-        console.log(intern);
+        // console.log(intern);
       }
 
       if (moreEmployees) {
-        return employeeChoice(teamMembers);
+        return employeeChoice();
       } else {
         return teamMembers;
       }
     });
+
+  // .then(() => {
+  //   const htmlPageContent = generatePage(answers);
+
+  //   fs.writeFile("index.html", htmlPageContent, (err) =>
+  //     err ? console.log(err) : console.log("Successfully created index.html!")
+  //   );
+  // });
 };
 
-console.log(teamMembers);
-const generateHTML = () => {
+console.log("this is the team", teamMembers);
+const generateHTML = (teamMembers) => {
   // array for cards
-  console.log("this the: ", teamMembers);
-  cardArray = [];
+  // console.log("this the: ", teamMembers);
+  let cardArray = [];
 
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < teamMembers.length; i++) {
     let employee = teamMembers[i];
     let type = employee.empType();
 
@@ -145,30 +152,31 @@ const generateHTML = () => {
 
   const empCards = cardArray.join("");
 
-  const genTeam = JSON.stringify(generatePage(empCards));
+  const genTeam = generatePage(empCards);
+  console.log("genteam =" + genTeam);
+  console.log("these cards:" + empCards);
   return genTeam;
 };
 
-const writeFile = (data) => {
-  fs.writeFile("./dist/index.html", generateHTML(data), (err) => {
+const writeFile = () => {
+  const finalHtml = generateHTML(teamMembers);
+  fs.writeFile("./dist/index.html", finalHtml, (err) => {
     if (err) {
       console.log(err);
       return;
     } else {
-      console.log(
-        "Your team profile has been successfully created! Please check out the index.html"
-      );
+      console.log("Your team profile has been successfully created");
     }
   });
 };
 
-manChoice();
-// .then((teamMembers) => {
-//   return generateHTML(teamMembers);
-// })
+manChoice().then(() => {
+  console.log(`Final check of team members: ${teamMembers}`);
+  writeFile();
+});
 // .then((generateHTML) => {
 //   return writeFile(generateHTML);
-// })
+// });
 // .catch((err) => {
 //   console.log(err);
-// });
+// })
