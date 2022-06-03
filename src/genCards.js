@@ -2,7 +2,7 @@
 const genMan = (manager) => {
   return `
 <div class="card" style="width: 18rem">
-  <div class="card-header">${manager.name}<br /><span class="title">Manager</span></div>
+  <div class="card-header">${manager.name}<br /><span class="title">&#128302;Manager</span></div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item id">ID: ${manager.id}</li>
     <li class="list-group-item email">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
@@ -15,7 +15,7 @@ const genMan = (manager) => {
 const genEng = (engineer) => {
   return `
 <div class="card" style="width: 18rem">
-  <div class="card-header">${engineer.name}<br /><span class="title">Engineer</span></div>
+  <div class="card-header">${engineer.name}<br /><span class="title">&#9937;Engineer</span></div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item id">ID: ${engineer.id}</li>
     <li class="list-group-item email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
@@ -28,7 +28,7 @@ const genEng = (engineer) => {
 const genInt = (intern) => {
   return `
 <div class="card" style="width: 18rem">
-  <div class="card-header">${intern.name}<br /><span class="title">Intern</span></div>
+  <div class="card-header">${intern.name}<br /><span class="title">&#10084;Intern</span></div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item id">ID: ${intern.id}</li>
     <li class="list-group-item email">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
