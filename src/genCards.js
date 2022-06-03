@@ -19,7 +19,7 @@ const genEng = (engineer) => {
   <ul class="list-group list-group-flush">
     <li class="list-group-item id">ID: ${engineer.id}</li>
     <li class="list-group-item email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-    <li class="list-group-item office">Github: ${engineer.github}</li>
+    <li class="list-group-item office">Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a></li>
   </ul>
 </div>`;
 };
