@@ -1,42 +1,5 @@
 const { genInt, genEng, genMan } = require("./genCards");
 
-// const generateHTML = (teamMembers) => {
-//   // array for cards
-//   console.log("this the: ", teamMembers);
-//   cardArray = [];
-
-//   for (let i = 0; i < teamMembers.length; i++) {
-//     let employee = teamMembers[i];
-//     let type = employee.empType();
-
-//     //manager function
-//     if (type === "Manager") {
-//       const manCard = genMan(employee);
-
-//       cardArray.push(manCard);
-//     }
-
-//     //engineer function
-//     if (type === "Engineer") {
-//       let engCard = genEng(employee);
-
-//       cardArray.push(engCard);
-//     }
-
-//     //intern function
-//     if (type === "Intern") {
-//       let intCard = genInt(employee);
-
-//       cardArray.push(intCard);
-//     }
-//   }
-
-//   //   const empCards = cardArray.join("");
-
-//   const genTeam = JSON.stringify(generatePage(empCards));
-//   return genTeam;
-// };
-
 const generatePage = (empCards) => {
   return `<!DOCTYPE html>
 <html lang="en">

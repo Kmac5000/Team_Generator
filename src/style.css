@@ -1,3 +1,47 @@
+body {
+  background: rgb(179, 181, 179);
+  background: radial-gradient(
+    circle,
+    rgba(179, 181, 179, 1) 0%,
+    rgba(121, 122, 121, 0.6446953781512605) 22%,
+    rgb(22, 16, 16) 96%
+  );
+}
+
+.navbar {
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 58%,
+    rgba(121, 122, 121, 0.6446953781512605) 80%,
+    rgba(41, 31, 31, 1) 89%
+  );
+}
+
 span {
   font-family: "Creepster", cursive;
+}
+
+li {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: large;
+  font-weight: 500;
+}
+
+.card {
+  margin: 2rem;
+  font-family: "Joan", serif;
+
+  text-align: center;
+  border-radius: 7%;
+}
+
+.card-header {
+  height: 4rem;
+  margin-top: 1rem;
+  background-color: grey;
+  font-family: "Gloria Hallelujah", cursive;
+  font-weight: 800;
+  font-size: xx-large;
 }

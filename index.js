@@ -5,7 +5,6 @@ const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const generatePage = require("./src/constructHTML");
-// const generateHTML = require("./src/constructHTML");
 const { genInt, genEng, genMan } = require("./src/genCards");
 
 let teamMembers = [];
@@ -97,7 +96,7 @@ const employeeChoice = () => {
         // console.log(engineer);
       }
       if (employeeType === "Intern") {
-        const intern = new Intern(name, id, school);
+        const intern = new Intern(name, id, email, school);
         teamMembers.push(intern);
         // console.log(intern);
       }
@@ -108,14 +107,6 @@ const employeeChoice = () => {
         return teamMembers;
       }
     });
-
-  // .then(() => {
-  //   const htmlPageContent = generatePage(answers);
-
-  //   fs.writeFile("index.html", htmlPageContent, (err) =>
-  //     err ? console.log(err) : console.log("Successfully created index.html!")
-  //   );
-  // });
 };
 
 console.log("this is the team", teamMembers);
@@ -174,9 +165,3 @@ manChoice().then(() => {
   console.log(`Final check of team members: ${teamMembers}`);
   writeFile();
 });
-// .then((generateHTML) => {
-//   return writeFile(generateHTML);
-// });
-// .catch((err) => {
-//   console.log(err);
-// })

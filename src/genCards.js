@@ -32,7 +32,7 @@ const genInt = (intern) => {
   <ul class="list-group list-group-flush">
     <li class="list-group-item id">ID: ${intern.id}</li>
     <li class="list-group-item email">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
-    <li class="list-group-item office">School: ${intern.office}</li>
+    <li class="list-group-item office">School: ${intern.school}</li>
   </ul>
 </div>`;
 };
