@@ -25,7 +25,7 @@ const generatePage = (empCards) => {
   <body>
     <header>
       <nav class="navbar navbar-light bg-dark justify-content-center display-1">
-        <span class="navbar-text text-light">Build A Team</span>
+        <span class="navbar-text text-light pageTitle">Build A Team</span>
       </nav>
     </header>
     <main>

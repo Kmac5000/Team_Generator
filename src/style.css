@@ -18,8 +18,14 @@ body {
   );
 }
 
-span {
+.pageTitle {
   font-family: "Creepster", cursive;
+}
+
+.title {
+  font-family: "Joan", serif;
+  font-weight: 400;
+  font-size: x-large;
 }
 
 li {
@@ -38,7 +44,7 @@ li {
 }
 
 .card-header {
-  height: 4rem;
+  height: 7rem;
   margin-top: 1rem;
   background-color: grey;
   font-family: "Gloria Hallelujah", cursive;
