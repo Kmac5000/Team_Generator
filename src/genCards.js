@@ -2,7 +2,7 @@
 const genMan = (manager) => {
   return `
 <div class="card" style="width: 18rem">
-  <div class="card-header">${manager.name}<br /><span class="title">Manger</span></div>
+  <div class="card-header">${manager.name}<br /><span class="title">Manager</span></div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item id">ID: ${manager.id}</li>
     <li class="list-group-item email">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
