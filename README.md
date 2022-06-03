@@ -1,4 +1,52 @@
-# Team_Generator
+# Team Generator
+
+![License](https://img.shields.io/badge/License-Apache_2.0-yellow.svg)
+
+## Description
+
+---
+
+A command line program to help keep track of a team. Cards will populate with the team member information.
+![Example](./Assets/Example_HTML.jpg)
+
+## <ins>Table of Contents</ins>
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Contact](#questions)
+
+---
+
+## Installation
+
+inquirer library
+
+## Usage
+
+To help keep track of who is on the team.
+
+## License
+
+This project is licensed under Apache_2.0
+
+## Contributing
+
+Kmac5000
+
+## Tests
+
+jest tests
+
+---
+
+## Questions:
+
+Rivermac5000@gmail.com
+
+https://github.com/Kmac5000
 
 # 10 Object-Oriented Programming: Team Profile Generator
 
